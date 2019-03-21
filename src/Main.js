@@ -1,7 +1,32 @@
 import React, { Component } from "react";
 
 class Main extends Component {
+
+
     render() {
+        const confirmarAlDoparti = () => {
+            fetch('http://localhost:5001/api/greeting', {
+                method: 'post',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+
+                //solo con post
+
+                body: JSON.stringify({
+                    firstParam: 'yourValue',
+                    secondParam: 'yourOtherValue',
+                }),
+                
+                mode: 'no-cors'
+            }).then(function (response) {
+                return response.json();
+            })
+                .then(function (myJson) {
+                    console.log(myJson);
+                });
+        }
         return (
             <div>
                 <h1>Bienvenido Dani!</h1>
@@ -17,8 +42,8 @@ class Main extends Component {
                         <option value="S">Suplente</option>
                     </select>
                 </div>
-                <button type="button">Confirmar</button>
-            </div>
+                <button type="button" onClick={() => confirmarAlDoparti()}>Confirmar</button>
+            </div >
         );
     }
 }

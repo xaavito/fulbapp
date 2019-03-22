@@ -1,31 +1,27 @@
 import React, { Component } from "react";
 
 class Main extends Component {
-
-
     render() {
         const confirmarAlDoparti = () => {
             fetch('http://localhost:5001/api/greeting', {
-                method: 'post',
+                method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': 'http://localhost:3000/'
                 },
-
-                //solo con post
-
-                body: JSON.stringify({
-                    firstParam: 'yourValue',
-                    secondParam: 'yourOtherValue',
-                }),
-                
-                mode: 'no-cors'
-            }).then(function (response) {
-                return response.json();
+            }).then((response) => {
+                if (!response.ok) throw new Error(response.status);
+                else return response.json();
             })
-                .then(function (myJson) {
-                    console.log(myJson);
+                .then((data) => {
+                    console.log("DATA STORED " + data);
+                })
+                .catch((error) => {
+                    console.log('error: ' + error);
+                    this.setState({ requestFailed: true });
                 });
+
         }
         return (
             <div>

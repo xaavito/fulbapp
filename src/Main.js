@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import mainPhoto from '../src/images/main.jpg';
 
 class Main extends Component {
     render() {
@@ -25,6 +26,7 @@ class Main extends Component {
         }
         return (
             <div>
+                <img src={mainPhoto} alt="Main Foto"/>
                 <h1>Bienvenido Dani!</h1>
                 <ul className="header">
                     <li><a href="/">Home</a></li>

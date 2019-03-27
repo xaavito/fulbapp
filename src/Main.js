@@ -5,7 +5,7 @@ import '../src/resources/style.scss';
 class Main extends Component {
     render() {
         const confirmarAlDoparti = () => {
-            fetch('https://fulbapp-serv.herokuapp.com:5001/api/greeting', {
+            fetch('https://fulbapp-serv.herokuapp.com/api/greeting', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

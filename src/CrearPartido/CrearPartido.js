@@ -17,23 +17,29 @@ class CrearPartido extends Component {
     render() {
         const crearPartido = () => {
             const fechaDelPartidoNuevo = this.state.date;
+            const fechaFormateada = fechaDelPartidoNuevo.toLocaleDateString("es-AR");
+            console.log(JSON.stringify({ 'fecha': fechaFormateada }));
             fetch(this.API_ENDPOINT + '/crear-partido', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ 'fecha': fechaDelPartidoNuevo })
+                body: JSON.stringify({ 'fecha': fechaFormateada })
             }).then((response) => {
                 if (!response.ok) {
                     throw new Error(response.status);
                 }
                 else {
-                    return response.json();
+                    /*
+                    if (response) {
+                        return response.json();
+                    }
+                    */
                 }
             })
                 .then((data) => {
-                    console.log("DATA STORED " + data);
+                    console.log("EXITOSO..." + data);
                 })
                 .catch((error) => {
                     console.log('error: ' + error);
@@ -51,6 +57,7 @@ class CrearPartido extends Component {
                         dateFormat="dd/MM/YYYY"
                         onChange={this.onChange}
                         selected={this.state.date}
+                        value={this.state.date}
                     />
 
                     <button className="main-button" type="button" onClick={() => crearPartido()}>Confirmar</button>

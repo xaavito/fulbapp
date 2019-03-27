@@ -16,17 +16,21 @@ class CrearPartido extends Component {
 
     render() {
         const crearPartido = () => {
+            const fechaDelPartidoNuevo = this.state.date;
             fetch(this.API_ENDPOINT + '/crear-partido', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'http://localhost:3000/'
+                    'Content-Type': 'application/json'
                 },
-                body: { fecha: this.state.date }
+                body: { 'fecha': fechaDelPartidoNuevo }
             }).then((response) => {
-                if (!response.ok) throw new Error(response.status);
-                else return response.json();
+                if (!response.ok) {
+                    throw new Error(response.status);
+                }
+                else {
+                    return response.json();
+                }
             })
                 .then((data) => {
                     console.log("DATA STORED " + data);

@@ -25,7 +25,7 @@ class CrearPartido extends Component {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ 'fecha': fechaFormateada })
+                body: JSON.stringify({ "fecha": fechaFormateada })
             }).then((response) => {
                 if (!response.ok) {
                     throw new Error(response.status);

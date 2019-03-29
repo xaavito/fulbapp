@@ -10,6 +10,7 @@ class CrearPartido extends Component {
 
     state = {
         date: new Date(),
+        confirmacion: '',
     }
 
     onChange = date => this.setState({ date })
@@ -22,7 +23,7 @@ class CrearPartido extends Component {
             fetch(this.API_ENDPOINT + '/crear-partido', {
                 method: 'POST',
                 headers: {
-                    'Accept': 'application/json',
+                    'Accept': 'text/html',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ "fecha": fechaFormateada })
@@ -30,15 +31,9 @@ class CrearPartido extends Component {
                 if (!response.ok) {
                     throw new Error(response.status);
                 }
-                else {
-                    /*
-                    if (response) {
-                        return response.json();
-                    }
-                    */
-                }
             })
                 .then((data) => {
+                    this.setState({ confirmacion: data })          
                     console.log("EXITOSO..." + data);
                 })
                 .catch((error) => {
@@ -51,6 +46,7 @@ class CrearPartido extends Component {
             <div>
                 <img src={mainPhoto} alt="Main Foto" className="image-full" />
                 <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>
+                <h1 className="main-title">{this.state.confirmacion}</h1>
                 <div className="content">
                     FECHA:
                     <DatePicker

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import mainPhoto from '../../src/images/main.jpg';
 import '../../src/resources/style.scss';
 import DatePicker from "react-datepicker";
+import Button from 'react-bootstrap/Button'
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -33,7 +34,7 @@ class CrearPartido extends Component {
                 }
             })
                 .then((data) => {
-                    this.setState({ confirmacion: data })          
+                    this.setState({ confirmacion: 'Se Creado el partido exitosamente!' })
                     console.log("EXITOSO..." + data);
                 })
                 .catch((error) => {
@@ -43,10 +44,10 @@ class CrearPartido extends Component {
 
         }
         return (
-            <div>
+            <div className="main-content">
                 <img src={mainPhoto} alt="Main Foto" className="image-full" />
                 <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>
-                <h1 className="main-title">{this.state.confirmacion}</h1>
+                <h1 className="sub-title">{this.state.confirmacion}</h1>
                 <div className="content">
                     FECHA:
                     <DatePicker
@@ -54,9 +55,16 @@ class CrearPartido extends Component {
                         onChange={this.onChange}
                         selected={this.state.date}
                         value={this.state.date}
+                        disabled={this.state.confirmacion}
                     />
 
-                    <button className="main-button" type="button" onClick={() => crearPartido()}>Confirmar</button>
+                    <Button
+                        className="main-button"
+                        type="button"
+                        onClick={() => crearPartido()}
+                        disabled={this.state.confirmacion}>
+                        Confirmar
+                    </Button>
                 </div>
             </div >
         );

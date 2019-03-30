@@ -7,11 +7,12 @@ import CrearPartido from './CrearPartido/CrearPartido'
 class Main extends Component {
 
     render() {
+        /*
         var http = require("http");
         setInterval(function () {
             http.get("https://fulbapp-cli.herokuapp.com/");
         }, 300000); // every 5 minutes (300000)
-
+        */    
         return (
             <BrowserRouter>
                 <Switch>

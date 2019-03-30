@@ -31,7 +31,9 @@ class Confirmacion extends Component {
                 headers: {
                     'Accept': 'text/html',
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'http://localhost:3000/'
+                    'Access-Control-Allow-Origin': 'http://localhost:3000/',
+                    // eslint-disable-next-line no-dupe-keys
+                    'Access-Control-Allow-Origin': 'https://fulbapp-cli.herokuapp.com'
                 },
                 body: JSON.stringify({ "id": parsed.id })
             }).then((response) => {
@@ -61,7 +63,9 @@ class Confirmacion extends Component {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': 'http://localhost:3000/'
+                    'Access-Control-Allow-Origin': 'http://localhost:3000/',
+                    // eslint-disable-next-line no-dupe-keys
+                    'Access-Control-Allow-Origin': 'https://fulbapp-cli.herokuapp.com'
                 },
                 body: JSON.stringify({
                     "jugador": parsed.id,

@@ -21,32 +21,34 @@ class Confirmacion extends Component {
     }
 
     loadJugadorNombre = () => {
-        console.log("Llamando a obtener nombre jugador")
-        const queryString = require('query-string');
-        const parsed = queryString.parse(this.props.location.search);
+        if (!this.state.jugadorNombre) {
+            console.log("Llamando a obtener nombre jugador ")
+            const queryString = require('query-string');
+            const parsed = queryString.parse(this.props.location.search);
 
-        fetch(this.API_ENDPOINT + '/get-user-name', {
-            method: 'POST',
-            headers: {
-                'Accept': 'text/html',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': 'http://localhost:3000/'
-            },
-            body: JSON.stringify({ "id": parsed.id })
-        }).then((response) => {
-            if (!response.ok) {
-                throw new Error(response.status);
-            }
-            return response;
-        })
-            .then((data) => {
-                //this.setState({ confirmacion: 'Se Creado el partido exitosamente!' })
-                console.log("EXITOSO... " + data.body);
+            fetch(this.API_ENDPOINT + '/get-user-name', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'text/html',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': 'http://localhost:3000/'
+                },
+                body: JSON.stringify({ "id": parsed.id })
+            }).then((response) => {
+                if (!response.ok) {
+                    throw new Error(response.status);
+                }
+                return response.text();
             })
-            .catch((error) => {
-                console.log('error: ' + error);
-                this.setState({ requestFailed: true });
-            });
+                .then((data) => {
+                    this.setState({ jugadorNombre: data })
+                    console.log("EXITOSO... " + data);
+                })
+                .catch((error) => {
+                    console.log('error: ' + error);
+                    this.setState({ requestFailed: true });
+                });
+        }
     }
 
     render() {
@@ -54,7 +56,7 @@ class Confirmacion extends Component {
             const queryString = require('query-string');
             const parsed = queryString.parse(this.props.location.search);
 
-            fetch('https://fulbapp-serv.herokuapp.com/confirmar', {
+            fetch(this.API_ENDPOINT + '/confirmar', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -69,12 +71,7 @@ class Confirmacion extends Component {
                 if (!response.ok) {
                     throw new Error(response.status);
                 }
-                return response;
-                /*
-                else {
-                    this.setState({ resultado: "Confirmacion exitosa! Gracias!" })
-                }
-                */
+                return response.text();
             })
                 .then((data) => {
                     console.log("DATA STORED " + data);
@@ -95,7 +92,7 @@ class Confirmacion extends Component {
                 <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>
                 <h1 className="sub-title">{this.state.resultado}</h1>
                 <div className="content">
-                    <h1>Bienvenido Dani!</h1>
+                    <h1>Bienvenido {this.state.jugadorNombre}</h1>
                     <div className="select">
                         <select className="main-button" onChange={this.saveSelectValue}>
                             <option value="C">Confirmo</option>

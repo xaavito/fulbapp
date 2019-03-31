@@ -18,7 +18,7 @@ class Asistencia extends Component {
     }
 
     loadConfirmados = () => {
-        if (this.state.jugadores) {
+        if (this.state.jugadores == null)  {
             console.log("Llamando a obtener nombre jugador ")
 
             fetch(this.API_ENDPOINT + '/get-confirmados', {

@@ -53,7 +53,7 @@ class Asistencia extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.jugadores.map((jugador) => {
+                        {this.state.jugadores && this.state.jugadores.map((jugador) => {
                             return <tr>
                                 <td>{jugador.nombre}</td>
                                 <td>{jugador.mail}</td>

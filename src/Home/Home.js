@@ -8,7 +8,7 @@ class Home extends Component {
         return (
             <div className="main-content">
                 <img src={mainPhoto} alt="Main Foto" className="image-full" />
-                BIENVENIDO AL SISTEMA DE CONFIRMACION AL PARTIDO DE LOS MIERCOLES!
+                <h1 className="main-title">BIENVENIDO AL SISTEMA DE CONFIRMACION AL PARTIDO DE LOS MIERCOLES!</h1>
             </div >
         );
     }

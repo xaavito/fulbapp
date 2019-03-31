@@ -52,7 +52,7 @@ class Asistencia extends Component {
             <div className="main-content">
                 <img src={mainPhoto} alt="Main Foto" className="image-full" />
                 {this.loadConfirmados()}
-                <Table striped bordered hover>
+                <Table striped bordered hover className="table-content">
                     <thead>
                         <tr>
                             <th>Nombre</th>

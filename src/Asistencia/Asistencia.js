@@ -59,7 +59,7 @@ class Asistencia extends Component {
                                 <td>{jugador.nombre}</td>
                                 <td>{jugador.mail}</td>
                                 <td>{jugador.condicion}</td>
-                            </tr>;
+                            </tr>
                         })}
                     </tbody>
                 </Table>;

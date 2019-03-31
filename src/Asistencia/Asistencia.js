@@ -39,6 +39,7 @@ class Asistencia extends Component {
     }
 
     render() {
+        console.log(this.state.jugadores);
         return (
             <div className="main-content">
                 <img src={mainPhoto} alt="Main Foto" className="image-full" />
@@ -48,7 +49,7 @@ class Asistencia extends Component {
                         <tr>
                             <th>Nombre</th>
                             <th>Mail</th>
-                            <th>COnfirmado</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>

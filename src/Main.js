@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import Confirmacion from './Confirmacion/Confirmacion'
 import CrearPartido from './CrearPartido/CrearPartido'
+import Asistencia from './Asistencia/Asistencia'
 
 class Main extends Component {
 
@@ -16,6 +17,10 @@ class Main extends Component {
         return (
             <BrowserRouter>
                 <Switch>
+                <Route
+                        path='/Asistencia'
+                        component={Asistencia}
+                    />
                     <Route
                         path='/CrearPartido'
                         component={CrearPartido}

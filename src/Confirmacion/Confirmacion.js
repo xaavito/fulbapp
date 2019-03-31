@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import mainPhoto from '../../src/images/main.jpg';
 import '../../src/resources/style.scss';
 import Button from 'react-bootstrap/Button'
+import { Redirect } from 'react-router-dom'
 
 class Confirmacion extends Component {
     API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
@@ -54,10 +55,11 @@ class Confirmacion extends Component {
     }
 
     render() {
+        let idJugador = '';
         const confirmarAlDoparti = () => {
             const queryString = require('query-string');
             const parsed = queryString.parse(this.props.location.search);
-
+            idJugador = parsed.id;
             fetch(this.API_ENDPOINT + '/confirmar', {
                 method: 'POST',
                 headers: {
@@ -68,7 +70,7 @@ class Confirmacion extends Component {
                     'Access-Control-Allow-Origin': 'https://fulbapp-cli.herokuapp.com'
                 },
                 body: JSON.stringify({
-                    "jugador": parsed.id,
+                    "jugador": idJugador,
                     "confirma": this.state.confirmacion
                 })
             }).then((response) => {
@@ -92,6 +94,8 @@ class Confirmacion extends Component {
 
             <div className="main-content">
                 {this.loadJugadorNombre()}
+                {idJugador == null ? <Redirect to='/'/> : <div/>} 
+          
                 <img src={mainPhoto} alt="Main Foto" className="image-full" />
                 <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>
                 <h1 className="sub-title">{this.state.resultado}</h1>

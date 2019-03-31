@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom"
 import Confirmacion from './Confirmacion/Confirmacion'
 import CrearPartido from './CrearPartido/CrearPartido'
 import Asistencia from './Asistencia/Asistencia'
+import Home from './Home/Home'
 
 class Main extends Component {
 
@@ -12,6 +13,10 @@ class Main extends Component {
             <BrowserRouter>
                 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"></link>
                 <Switch>
+                    <Route
+                        path='/Confirmar'
+                        component={Confirmacion}
+                    />
                     <Route
                         path='/Asistencia'
                         component={Asistencia}
@@ -22,7 +27,7 @@ class Main extends Component {
                     />
                     <Route
                         path='/'
-                        component={Confirmacion}
+                        component={Home}
                     />
                 </Switch>
             </BrowserRouter>

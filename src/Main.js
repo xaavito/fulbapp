@@ -8,14 +8,9 @@ import Asistencia from './Asistencia/Asistencia'
 class Main extends Component {
 
     render() {
-        /*
-        var http = require("http");
-        setInterval(function () {
-            http.get("https://fulbapp-cli.herokuapp.com/");
-        }, 300000); // every 5 minutes (300000)
-        */    
         return (
             <BrowserRouter>
+                <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"></link>
                 <Switch>
                     <Route
                         path='/Asistencia'

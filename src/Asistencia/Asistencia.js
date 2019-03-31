@@ -2,12 +2,19 @@ import React, { Component } from "react";
 import mainPhoto from '../../src/images/main.jpg';
 import '../../src/resources/style.scss';
 import Table from 'react-bootstrap/Table'
+import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+import Button from 'react-bootstrap/Button'
 
 class Asistencia extends Component {
     API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
 
     state = {
-        jugadores: ''
+        jugadores: null
+    }
+
+    reloadConfirmados = () => {
+        this.setState({jugadores: null});
+        this.loadConfirmados();
     }
 
     loadConfirmados = () => {
@@ -62,6 +69,7 @@ class Asistencia extends Component {
                             </tr>
                         })}
                     </tbody>
+                    <Button variant="primary" size="lg" className="main-button" type="button" onClick={() => this.reloadConfirmados()}>Recargar</Button>
                 </Table>;
             </div >
         );

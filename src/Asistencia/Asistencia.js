@@ -10,17 +10,8 @@ class Asistencia extends Component {
         jugadores: ''
     }
 
-    saveSelectValue = (e) => {
-        let data = {}
-        data = e.target.value
-        console.log("confirmacion " + data);
-        this.setState({ confirmacion: data })
-    }
-
     loadConfirmados = () => {
         console.log("Llamando a obtener nombre jugador ")
-        const queryString = require('query-string');
-        const parsed = queryString.parse(this.props.location.search);
 
         fetch(this.API_ENDPOINT + '/get-confirmados', {
             method: 'GET',
@@ -61,7 +52,7 @@ class Asistencia extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.jugadores.map(function (jugador) {
+                        {this.state.jugadores.map((jugador) => {
                             return <tr>
                                 <td>{jugador.nombre}</td>
                                 <td>{jugador.mail}</td>

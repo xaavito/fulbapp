@@ -50,12 +50,15 @@ class CrearPartido extends Component {
                 <h1 className="sub-title">{this.state.confirmacion}</h1>
                 <div className="content">
                     FECHA:
+                    <br/>
                     <DatePicker
                         dateFormat="dd/MM/YYYY"
                         onChange={this.onChange}
                         selected={this.state.date}
                         value={this.state.date}
                         disabled={this.state.confirmacion}
+                        placeholderText="Seleccione una fecha!" 
+                        minDate={new Date()}
                     />
 
                     <Button

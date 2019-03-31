@@ -13,12 +13,12 @@ class Asistencia extends Component {
     }
 
     reloadConfirmados = () => {
-        this.setState({jugadores: null});
+        this.setState({ jugadores: null });
         this.loadConfirmados();
     }
 
     loadConfirmados = () => {
-        if (!this.state.jugadores) {
+        if (this.state.jugadores) {
             console.log("Llamando a obtener nombre jugador ")
 
             fetch(this.API_ENDPOINT + '/get-confirmados', {
@@ -52,25 +52,28 @@ class Asistencia extends Component {
             <div className="main-content">
                 <img src={mainPhoto} alt="Main Foto" className="image-full" />
                 {this.loadConfirmados()}
-                <Table striped bordered hover className="table-content">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Mail</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.jugadores && this.state.jugadores.map((jugador) => {
-                            return <tr>
-                                <td>{jugador.nombre}</td>
-                                <td>{jugador.mail}</td>
-                                <td>{jugador.condicion}</td>
+                <div  className="table-content" >
+                    <Table borderlessvariant="dark">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Mail</th>
+                                <th>Status</th>
                             </tr>
-                        })}
-                    </tbody>
+                        </thead>
+                        <tbody>
+                            {this.state.jugadores && this.state.jugadores.map((jugador) => {
+                                return <tr key={jugador.mail}>
+                                    <td>{jugador.nombre}</td>
+                                    <td>{jugador.mail}</td>
+                                    <td>{jugador.condicion}</td>
+                                </tr>
+                            })}
+                        </tbody>
+
+                    </Table>;
                     <Button variant="primary" size="lg" className="main-button" type="button" onClick={() => this.reloadConfirmados()}>Recargar</Button>
-                </Table>;
+                </div>
             </div >
         );
     }

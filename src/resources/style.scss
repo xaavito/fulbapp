@@ -52,6 +52,7 @@
   padding: 5px;
   color: #ffffff;
   font-weight: bold;
+  width: 100%;
 }
 
 .main-button {
@@ -61,4 +62,8 @@
 
 .main-content {
   position: relative;
+}
+
+input {
+  color: black;
 }

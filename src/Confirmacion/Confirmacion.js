@@ -94,7 +94,8 @@ class Confirmacion extends Component {
 
             <div className="main-content">
                 {this.loadJugadorNombre()}
-                {idJugador == null ? <Redirect to='/'/> : <div/>} 
+                {console.log("lalalala " + idJugador)}
+                {!idJugador ? <Redirect to='/'/> : <div/>} 
           
                 <img src={mainPhoto} alt="Main Foto" className="image-full" />
                 <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>

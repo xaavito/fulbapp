@@ -17,7 +17,7 @@ class Main extends Component {
         return (
             <BrowserRouter>
                 <Switch>
-                <Route
+                    <Route
                         path='/Asistencia'
                         component={Asistencia}
                     />

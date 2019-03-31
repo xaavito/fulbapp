@@ -30,8 +30,7 @@ class Asistencia extends Component {
                 'Access-Control-Allow-Origin': 'http://localhost:3000/',
                 // eslint-disable-next-line no-dupe-keys
                 'Access-Control-Allow-Origin': 'https://fulbapp-cli.herokuapp.com'
-            },
-            body: JSON.stringify({ "id": parsed.id })
+            }
         }).then((response) => {
             if (!response.ok) {
                 throw new Error(response.status);

@@ -11,13 +11,12 @@ class Confirmacion extends Component {
         jugadorID: '',
         confirmacion: 'C',
         resultado: '',
-        jugadorNombre: ''
+        jugadorNombre: null
     }
 
     saveSelectValue = (e) => {
         let data = {}
         data = e.target.value
-        console.log("confirmacion " + data);
         this.setState({ confirmacion: data })
     }
 
@@ -94,8 +93,7 @@ class Confirmacion extends Component {
 
             <div className="main-content">
                 {this.loadJugadorNombre()}
-                {console.log("lalalala " + idJugador)}
-                {!idJugador ? <Redirect to='/'/> : <div/>} 
+                {this.state.jugadorNombre == null ? <Redirect to='/'/> : <div/>} 
           
                 <img src={mainPhoto} alt="Main Foto" className="image-full" />
                 <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>

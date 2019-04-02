@@ -28,7 +28,7 @@ class Invitado extends Component {
                 // eslint-disable-next-line no-dupe-keys
                 'Access-Control-Allow-Origin': 'https://fulbapp-cli.herokuapp.com'
             },
-            body: this.state
+            body: JSON.stringify(this.state)
         }).then((response) => {
             if (!response.ok) {
                 throw new Error(response.status);

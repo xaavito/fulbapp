@@ -5,6 +5,8 @@ import Confirmacion from './Confirmacion/Confirmacion'
 import CrearPartido from './CrearPartido/CrearPartido'
 import Asistencia from './Asistencia/Asistencia'
 import Invitado from './Invitado/Invitado'
+import Jugador from './Jugador/Jugador'
+
 import Home from './Home/Home'
 
 class Main extends Component {
@@ -26,6 +28,10 @@ class Main extends Component {
                     <Route
                         path='/Invitado'
                         component={Invitado}
+                    />
+                    <Route
+                        path='/Jugador'
+                        component={Jugador}
                     />
                     <Route
                         path='/CrearPartido'

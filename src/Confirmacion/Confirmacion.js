@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import mainPhoto from '../../src/images/main.jpg';
 import '../../src/resources/style.scss';
 import Button from 'react-bootstrap/Button'
-import { Redirect } from 'react-router-dom'
+//import { Redirect } from 'react-router-dom'
 
 class Confirmacion extends Component {
     API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';

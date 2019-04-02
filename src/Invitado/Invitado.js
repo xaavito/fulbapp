@@ -10,7 +10,8 @@ class Invitado extends Component {
     state = {
         nombre: '',
         email: '',
-        confirmacion: false
+        confirmacion: false,
+        response: ''
     }
 
     onChange = e => this.setState({ [e.target.name]: e.target.value })
@@ -38,6 +39,7 @@ class Invitado extends Component {
         })
             .then((data) => {
                 console.log("EXITOSO... " + data);
+                this.setState({ response: data })
             })
             .catch((error) => {
                 console.log('error: ' + error);
@@ -49,6 +51,7 @@ class Invitado extends Component {
         return (
             <div className="main-content">
                 <img src={mainPhoto} alt="Main Foto" className="image-full" />
+                <h1 className="sub-title">{this.state.response}</h1>
                 <div className="table-content" >
                     Nombre Invitado
                     <input

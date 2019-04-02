@@ -66,8 +66,8 @@ class Jugador extends Component {
                     Apellido
                     <input
                         type="text"
-                        name="nombre"
-                        id="nombre"
+                        name="apellido"
+                        id="apellido"
                         value={this.state.apellido}
                         onChange={this.onChange} />
                     Email Invitado
@@ -80,8 +80,8 @@ class Jugador extends Component {
                     Telefono
                     <input
                         type="text"
-                        name="nombre"
-                        id="nombre"
+                        name="telefono"
+                        id="telefono"
                         value={this.state.telefono}
                         onChange={this.onChange} />
                     <Button disabled={this.state.confirmacion} variant="primary" size="lg" className="main-button" type="button" onClick={() => this.agregarJugador()}>Confirmar</Button>

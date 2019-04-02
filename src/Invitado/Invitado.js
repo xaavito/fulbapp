@@ -34,7 +34,7 @@ class Invitado extends Component {
                 throw new Error(response.status);
             }
             this.setState({ confirmacion: true });
-            return response.json();
+            return response.text();
         })
             .then((data) => {
                 console.log("EXITOSO... " + data);

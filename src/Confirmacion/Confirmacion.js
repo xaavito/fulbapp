@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import mainPhoto from '../../src/images/main.jpg';
 import '../../src/resources/style.scss';
 import Button from 'react-bootstrap/Button'
-//import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 class Confirmacion extends Component {
     API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
@@ -89,12 +89,12 @@ class Confirmacion extends Component {
                 });
 
         }
-        // {this.state.jugadorNombre == null ? <Redirect to='/'/> : <div/>}  lo scamos por ahora
+        //   lo scamos por ahora
         return (
 
             <div className="main-content">
                 {this.loadJugadorNombre()}
-               
+                {this.state.jugadorNombre == null ? <Redirect to='/'/> : <div/>}
           
                 <img src={mainPhoto} alt="Main Foto" className="image-full" />
                 <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>

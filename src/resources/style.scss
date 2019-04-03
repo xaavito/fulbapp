@@ -1,58 +1,65 @@
+html,
+body,
+div#root, 
+div.table-content,
+.main-content {
+  width: 100%;
+  height: 100%;
+  background-color:#3CB371;
+}
+
 .image-full {
   width: 100%;
 }
 
 .main-title {
-  float: left;
-  position: absolute;
-  //left: 25%;
-  top: 5%;
   z-index: 1000;
   background-color: transparent;
   padding: 5px;
   color: #ffffff;
   font-weight: bold;
   text-align: center;
-  font-size: 2em;
+  font-size: 4vw;
 }
 
 .sub-title {
-  float: left;
-  position: absolute;
-  //left: 25%;
-  top: 20%;
-  z-index: 1000;
   background-color: transparent;
   padding: 5px;
   color: #ffffff;
   font-weight: bold;
   text-align: center;
   color: crimson;
-  font-size: 2em;
+  font-size: 4vw;
 }
 
 .content {
-  float: left;
-  position: absolute;
-  left: 40%;
-  bottom: 10%;
   z-index: 1000;
   background-color: transparent;
   padding: 5px;
   color: #ffffff;
   font-weight: bold;
+  font-size: 4vw;
+  width: 100%;
 }
 
 .table-content {
-  float: left;
-  position: absolute;
-  bottom: 10%;
   z-index: 1000;
   background-color: transparent;
   padding: 5px;
   color: #ffffff;
   font-weight: bold;
   width: 100%;
+  font-size: 2vw;
+  border: 10px solid black;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.table {
+  overflow: auto;
+  display: block;
+  table-layout: auto;
+  display: table;
 }
 
 .main-button {
@@ -60,10 +67,27 @@
   height: 5%;
 }
 
-.main-content {
-  position: relative;
+div.react-datepicker-wrapper input,
+div.table-content input,
+div.content select,
+h6,
+table * {
+  color: black;
 }
 
-div.react-datepicker-wrapper input, div.table-content input, div.content select {
-  color: black;
+h6 {
+  width: 25%;
+}
+
+table tbody {
+  width: 100%;
+}
+
+.giphy-embed {
+  margin: 2vw;
+  width: 65%;
+}
+
+table.table > tbody > tr > td, table.table>thead>tr>th {
+  border: 0px;
 }

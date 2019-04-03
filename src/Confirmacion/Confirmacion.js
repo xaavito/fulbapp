@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import mainPhoto from '../../src/images/main.jpg';
+//import mainPhoto from '../../src/images/main.jpg';
 import '../../src/resources/style.scss';
 import Button from 'react-bootstrap/Button'
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
+import Table from 'react-bootstrap/Table'
 
 class Confirmacion extends Component {
     API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
@@ -12,7 +13,7 @@ class Confirmacion extends Component {
         confirmacion: 'C',
         resultado: '',
         jugadorNombre: null,
-        responseOK : false
+        responseOK: false
     }
 
     saveSelectValue = (e) => {
@@ -81,7 +82,7 @@ class Confirmacion extends Component {
             })
                 .then((data) => {
                     console.log("DATA STORED " + data);
-                    
+
                     this.setState({ responseOK: true })
                     this.setState({ resultado: "Confirmacion exitosa! Gracias!" })
                 })
@@ -98,20 +99,25 @@ class Confirmacion extends Component {
 
             <div className="main-content">
                 {this.loadJugadorNombre()}
-               
-                <img src={mainPhoto} alt="Main Foto" className="image-full" />
-                <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>
-                <h1 className="sub-title">{this.state.resultado}</h1>
-                <div className="content">
-                    <h1>Bienvenido {this.state.jugadorNombre}</h1>
-                    <div className="select">
-                        <select className="main-button" onChange={this.saveSelectValue}>
-                            <option value="C">Confirmo</option>
-                            <option value="B">Baja</option>
-                            <option value="S">Suplente</option>
-                        </select>
-                    </div>
-                    <Button disabled={this.state.responseOK} variant="primary" size="lg" className="main-button" type="button" onClick={() => confirmarAlDoparti()}>Confirmar</Button>
+                <div className="table-content" >
+                    <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>
+                    <h1 className="sub-title">{this.state.resultado}</h1>
+                    <Table borderlessvariant="dark">
+                        <tbody>
+                            <tr key="1">
+                                <h1 className="main-title">Bienvenido {this.state.jugadorNombre}</h1>
+                            </tr>
+                            <tr key="2">
+                                <td> <select className="main-button" onChange={this.saveSelectValue}>
+                                    <option value="C">Confirmo</option>
+                                    <option value="B">Baja</option>
+                                    <option value="S">Suplente</option>
+                                </select></td>
+                            </tr>
+                        </tbody>
+
+                    </Table>
+                    <Button disabled={this.state.responseOK} variant="primary" className="main-button" type="button" onClick={() => confirmarAlDoparti()}>Confirmar</Button>
                 </div>
             </div >
         );

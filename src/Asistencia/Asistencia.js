@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import mainPhoto from '../../src/images/main.jpg';
+//import mainPhoto from '../../src/images/main.jpg';
 import '../../src/resources/style.scss';
 import Table from 'react-bootstrap/Table'
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
@@ -18,7 +18,7 @@ class Asistencia extends Component {
     }
 
     loadConfirmados = () => {
-        if (this.state.jugadores == null)  {
+        if (this.state.jugadores == null) {
             console.log("Llamando a obtener nombre jugador ")
 
             fetch(this.API_ENDPOINT + '/get-confirmados', {
@@ -50,9 +50,9 @@ class Asistencia extends Component {
     render() {
         return (
             <div className="main-content">
-                <img src={mainPhoto} alt="Main Foto" className="image-full" />
                 {this.loadConfirmados()}
-                <div  className="table-content" >
+                <div className="table-content" >
+                    <h1 className="main-title">PAGINA DE ASISTENCIA A ULTIMO EVENTO</h1>
                     <Table borderlessvariant="dark">
                         <thead>
                             <tr>
@@ -70,9 +70,8 @@ class Asistencia extends Component {
                                 </tr>
                             })}
                         </tbody>
-
-                    </Table>;
-                    <Button variant="primary" size="lg" className="main-button" type="button" onClick={() => this.reloadConfirmados()}>Recargar</Button>
+                    </Table>
+                    <Button variant="primary" className="main-button" type="button" onClick={() => this.reloadConfirmados()}>Recargar</Button>
                 </div>
             </div >
         );

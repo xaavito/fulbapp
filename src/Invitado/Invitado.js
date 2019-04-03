@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import mainPhoto from '../../src/images/main.jpg';
+// import mainPhoto from '../../src/images/main.jpg';
 import '../../src/resources/style.scss';
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 
 class Invitado extends Component {
@@ -50,24 +51,34 @@ class Invitado extends Component {
     render() {
         return (
             <div className="main-content">
-                <img src={mainPhoto} alt="Main Foto" className="image-full" />
-                <h1 className="sub-title">{this.state.response}</h1>
                 <div className="table-content" >
-                    Nombre Invitado
-                    <input
-                        type="text"
-                        name="nombre"
-                        id="nombre"
-                        value={this.state.nombre}
-                        onChange={this.onChange} />
-                    Email Invitado
-                    <input
-                        type="text"
-                        name="email"
-                        id="email"
-                        value={this.state.email}
-                        onChange={this.onChange} />
-                    <Button disabled={this.state.confirmacion} variant="primary" size="lg" className="main-button" type="button" onClick={() => this.agregarInvitado()}>Confirmar</Button>
+                    <h1 className="main-title">PAGINA DE GENERACION DE INVITADOS</h1>
+                    <h1 className="sub-title">{this.state.response}</h1>
+                    <Table borderlessvariant="dark">
+                        <tbody>
+                            <tr key="1">
+                                <td>Nombre Invitado</td>
+                                <td> <input
+                                    type="text"
+                                    name="nombre"
+                                    id="nombre"
+                                    value={this.state.nombre}
+                                    onChange={this.onChange} /></td>
+                            </tr>
+                            <tr key="2">
+                                <td>Email Invitado</td>
+                                <td> <input
+                                    type="text"
+                                    name="email"
+                                    id="email"
+                                    value={this.state.email}
+                                    onChange={this.onChange} /></td>
+                            </tr>
+                        </tbody>
+
+                    </Table>
+
+                    <Button disabled={this.state.confirmacion} variant="primary" className="main-button" type="button" onClick={() => this.agregarInvitado()}>Confirmar</Button>
                 </div>
             </div >
         );

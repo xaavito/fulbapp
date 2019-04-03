@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import mainPhoto from '../../src/images/main.jpg';
+// import mainPhoto from '../../src/images/main.jpg';
 import '../../src/resources/style.scss';
 import DatePicker from "react-datepicker";
 import Button from 'react-bootstrap/Button'
+import Table from 'react-bootstrap/Table'
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -45,21 +46,28 @@ class CrearPartido extends Component {
         }
         return (
             <div className="main-content">
-                <img src={mainPhoto} alt="Main Foto" className="image-full" />
-                <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>
-                <h1 className="sub-title">{this.state.confirmacion}</h1>
-                <div className="content">
-                    FECHA:
-                    <br/>
-                    <DatePicker
-                        dateFormat="dd/MM/YYYY"
-                        onChange={this.onChange}
-                        selected={this.state.date}
-                        value={this.state.date}
-                        disabled={this.state.confirmacion}
-                        placeholderText="Seleccione una fecha!" 
-                        minDate={new Date()}
-                    />
+
+                <div className="table-content" >
+                    <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>
+                    <h1 className="sub-title">{this.state.confirmacion}</h1>
+                    <Table borderlessvariant="dark">
+                        <tbody>
+                            <tr key="1">
+                                <td>FECHA:</td>
+                                <td> 
+                                    <DatePicker
+                                    dateFormat="dd/MM/YYYY"
+                                    onChange={this.onChange}
+                                    selected={this.state.date}
+                                    value={this.state.date}
+                                    disabled={this.state.confirmacion}
+                                    placeholderText="Seleccione una fecha!"
+                                    minDate={new Date()}
+                                /></td>
+                            </tr>
+                        </tbody>
+
+                    </Table>
 
                     <Button
                         className="main-button"

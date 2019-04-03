@@ -63,7 +63,7 @@ class Asistencia extends Component {
         return (
             <div className="main-content">
                 {this.loadConfirmados()}
-                <div className="table-content" >
+                <div className="table-content-asistentes" >
                     <h1 className="main-title">PAGINA DE ASISTENCIA A ULTIMO EVENTO</h1>
                     <Table borderlessvariant="dark">
                         <thead>

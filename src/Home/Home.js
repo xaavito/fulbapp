@@ -9,7 +9,9 @@ class Home extends Component {
             <div className="main-content">
                 <div className="table-content" >
                     <h1 className="main-title">BIENVENIDO AL SISTEMA DE CONFIRMACION AL PARTIDO DE LOS MIERCOLES!</h1>
-                    <img src={mainPhoto} alt="Main Foto" className="giphy-embed" />
+                    <div className="content-button">
+                        <img src={mainPhoto} alt="Main Foto" className="giphy-embed" />
+                    </div>
                 </div>
             </div >
         );

@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button'
 // import { Redirect } from 'react-router-dom'
 import Table from 'react-bootstrap/Table'
 
+import { Link } from 'react-router-dom'
+
 class Confirmacion extends Component {
     API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
 
@@ -119,7 +121,10 @@ class Confirmacion extends Component {
                     </Table>
                     <div className="content-button">
                         <Button disabled={this.state.responseOK} variant="primary" className="main-button" type="button" onClick={() => confirmarAlDoparti()}>Confirmar</Button>
+                        <br/>
+                        <Link to ='/Asistencia'>Ver Asistentes</Link>
                     </div>
+
                 </div>
             </div >
         );

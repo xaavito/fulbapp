@@ -11,7 +11,8 @@ class Confirmacion extends Component {
         jugadorID: '',
         confirmacion: 'C',
         resultado: '',
-        jugadorNombre: null
+        jugadorNombre: null,
+        responseOK : false
     }
 
     saveSelectValue = (e) => {
@@ -80,6 +81,8 @@ class Confirmacion extends Component {
             })
                 .then((data) => {
                     console.log("DATA STORED " + data);
+                    
+                    this.setState({ responseOK: true })
                     this.setState({ resultado: "Confirmacion exitosa! Gracias!" })
                 })
                 .catch((error) => {
@@ -96,7 +99,6 @@ class Confirmacion extends Component {
             <div className="main-content">
                 {this.loadJugadorNombre()}
                
-          
                 <img src={mainPhoto} alt="Main Foto" className="image-full" />
                 <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>
                 <h1 className="sub-title">{this.state.resultado}</h1>
@@ -109,7 +111,7 @@ class Confirmacion extends Component {
                             <option value="S">Suplente</option>
                         </select>
                     </div>
-                    <Button variant="primary" size="lg" className="main-button" type="button" onClick={() => confirmarAlDoparti()}>Confirmar</Button>
+                    <Button disabled={this.state.responseOK} variant="primary" size="lg" className="main-button" type="button" onClick={() => confirmarAlDoparti()}>Confirmar</Button>
                 </div>
             </div >
         );

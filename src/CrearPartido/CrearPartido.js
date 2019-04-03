@@ -54,28 +54,29 @@ class CrearPartido extends Component {
                         <tbody>
                             <tr key="1">
                                 <td>FECHA:</td>
-                                <td> 
+                                <td>
                                     <DatePicker
-                                    dateFormat="dd/MM/YYYY"
-                                    onChange={this.onChange}
-                                    selected={this.state.date}
-                                    value={this.state.date}
-                                    disabled={this.state.confirmacion}
-                                    placeholderText="Seleccione una fecha!"
-                                    minDate={new Date()}
-                                /></td>
+                                        dateFormat="dd/MM/YYYY"
+                                        onChange={this.onChange}
+                                        selected={this.state.date}
+                                        value={this.state.date}
+                                        disabled={this.state.confirmacion}
+                                        placeholderText="Seleccione una fecha!"
+                                        minDate={new Date()}
+                                    /></td>
                             </tr>
                         </tbody>
 
                     </Table>
-
-                    <Button
-                        className="main-button"
-                        type="button"
-                        onClick={() => crearPartido()}
-                        disabled={this.state.confirmacion}>
-                        Confirmar
+                    <div className="content-button">
+                        <Button
+                            className="main-button"
+                            type="button"
+                            onClick={() => crearPartido()}
+                            disabled={this.state.confirmacion}>
+                            Confirmar
                     </Button>
+                    </div>
                 </div>
             </div >
         );

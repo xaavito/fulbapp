@@ -117,7 +117,9 @@ class Confirmacion extends Component {
                         </tbody>
 
                     </Table>
-                    <Button disabled={this.state.responseOK} variant="primary" className="main-button" type="button" onClick={() => confirmarAlDoparti()}>Confirmar</Button>
+                    <div className="content-button">
+                        <Button disabled={this.state.responseOK} variant="primary" className="main-button" type="button" onClick={() => confirmarAlDoparti()}>Confirmar</Button>
+                    </div>
                 </div>
             </div >
         );

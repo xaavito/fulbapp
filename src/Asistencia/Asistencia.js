@@ -12,6 +12,18 @@ class Asistencia extends Component {
         jugadores: null
     }
 
+    convertConfirm = (confirmStatus) => {
+        if (confirmStatus === 'C') {
+            return 'Confirmado';
+        }
+        if (confirmStatus === 'B') {
+            return 'Baja';
+        }
+        if (confirmStatus === 'S') {
+            return 'Suplente';
+        }
+    }
+
     reloadConfirmados = () => {
         this.setState({ jugadores: null });
         this.loadConfirmados();
@@ -66,12 +78,14 @@ class Asistencia extends Component {
                                 return <tr key={jugador.mail}>
                                     <td>{jugador.nombre}</td>
                                     <td>{jugador.mail}</td>
-                                    <td>{jugador.condicion}</td>
+                                    <td>{this.convertConfirm(jugador.condicion)}</td>
                                 </tr>
                             })}
                         </tbody>
                     </Table>
-                    <Button variant="primary" className="main-button" type="button" onClick={() => this.reloadConfirmados()}>Recargar</Button>
+                    <div className="content-button">
+                        <Button variant="primary" className="main-button" type="button" onClick={() => this.reloadConfirmados()}>Recargar</Button>
+                    </div>
                 </div>
             </div >
         );

@@ -52,6 +52,9 @@ div.table-content,
   font-size: 2vw;
   border: 10px solid black;
   border-radius: 3px;
+}
+
+.content-button {
   text-align: center;
 }
 
@@ -86,6 +89,7 @@ table tbody {
 .giphy-embed {
   margin: 2vw;
   width: 65%;
+  max-height: 65%;
 }
 
 table.table > tbody > tr > td, table.table>thead>tr>th {

@@ -77,8 +77,9 @@ class Invitado extends Component {
                         </tbody>
 
                     </Table>
-
-                    <Button disabled={this.state.confirmacion} variant="primary" className="main-button" type="button" onClick={() => this.agregarInvitado()}>Confirmar</Button>
+                    <div className="content-button">
+                        <Button disabled={this.state.confirmacion} variant="primary" className="main-button" type="button" onClick={() => this.agregarInvitado()}>Confirmar</Button>
+                    </div>
                 </div>
             </div >
         );

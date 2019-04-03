@@ -96,8 +96,9 @@ class Jugador extends Component {
                             </tr>
                         </tbody>
                     </Table>
-
-                    <Button disabled={this.state.confirmacion} variant="primary" className="main-button" type="button" onClick={() => this.agregarJugador()}>Confirmar</Button>
+                    <div className="content-button">
+                        <Button disabled={this.state.confirmacion} variant="primary" className="main-button" type="button" onClick={() => this.agregarJugador()}>Confirmar</Button>
+                    </div>
                 </div >
             </div>
         );

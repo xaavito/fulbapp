@@ -55,6 +55,7 @@ class Jugador extends Component {
         return (
             <div className="main-content">
                 <div className="table-content" >
+                <h1 className="main-title">PAGINA DE GENERACION DE JUGADORES</h1>
                     <h1 className="sub-title">{this.state.response}</h1>
                     <Table borderlessvariant="dark">
                         <tbody>

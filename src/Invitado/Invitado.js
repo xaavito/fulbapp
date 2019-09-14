@@ -11,7 +11,7 @@ class Invitado extends Component {
     state = {
         nombre: '',
         email: '',
-        confirmacion: false,
+        confirmacion: true,
         response: ''
     }
 

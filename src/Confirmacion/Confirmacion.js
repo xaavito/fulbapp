@@ -111,9 +111,8 @@ class Confirmacion extends Component {
                             </tr>
                             <tr key="2">
                                 <td> <select className="main-button" onChange={this.saveSelectValue}>
-                                    <option value="C">Confirmo</option>
-                                    <option value="B">Baja</option>
-                                    <option value="S">Suplente</option>
+                                    <option value="C">Confirmo!</option>
+                                    <option value="B">Baja!</option>
                                 </select></td>
                             </tr>
                         </tbody>

@@ -56,7 +56,7 @@ class CrearPartido extends Component {
                                 <td>FECHA:</td>
                                 <td>
                                     <DatePicker
-                                        dateFormat="dd/MM/YYYY"
+                                        dateFormat="dd/MM/yyyy"
                                         onChange={this.onChange}
                                         selected={this.state.date}
                                         value={this.state.date}

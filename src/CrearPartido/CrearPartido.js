@@ -32,7 +32,7 @@ class CrearPartido extends Component {
             }).then((response) => {
                 if (response.ok) {
                     this.setState({ confirmacion: 'Se Creado el partido exitosamente!' })
-                    console.log("EXITOSO..." + data);
+                    console.log("EXITOSO..." + response.text);
                 }
                 if (response.status >= 500) {
                     this.setState({ confirmacion: response.statusText })

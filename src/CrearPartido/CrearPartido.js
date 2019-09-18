@@ -30,14 +30,15 @@ class CrearPartido extends Component {
                 },
                 body: JSON.stringify({ "fecha": fechaFormateada })
             }).then((response) => {
-                if (!response.ok) {
-                    throw new Error(response.status, response.statusText);
-                }
-            })
-                .then((data) => {
+                if (response.ok) {
                     this.setState({ confirmacion: 'Se Creado el partido exitosamente!' })
                     console.log("EXITOSO..." + data);
-                })
+                }
+                if (response.status >= 500) {
+                    this.setState({ confirmacion: response.statusText })
+                    console.log("error..." + response.statusText);
+                }
+            })
                 .catch((error) => {
                     console.log('error: ' + error.statusText);
                     this.setState({ requestFailed: true });

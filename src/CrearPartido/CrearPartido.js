@@ -31,7 +31,9 @@ class CrearPartido extends Component {
                 body: JSON.stringify({ "fecha": fechaFormateada })
             }).then((response) => {
                 if (!response.ok) {
-                    throw new Error(response.status, response.statusText);
+                    //throw new Error(response.status, response.statusText);
+                    console.log("ERROR!!!" + response.message);
+                    this.setState({ confirmacion: response.message })
                 }
             })
                 .then((data) => {

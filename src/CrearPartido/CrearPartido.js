@@ -12,7 +12,9 @@ class CrearPartido extends Component {
 
     state = {
         date: new Date(),
-        confirmacion: '',
+        mensaje: '',
+        error: false,
+        estado: 100
     }
 
     onChange = date => this.setState({ date })
@@ -30,28 +32,33 @@ class CrearPartido extends Component {
                 },
                 body: JSON.stringify({ "fecha": fechaFormateada })
             }).then((response) => {
+                this.setState({estado: response.status}); 
                 if (!response.ok) {
-                    //throw new Error(response.status, response.statusText);
-                    console.log("ERROR!!!" + response.message);
-                    this.setState({ confirmacion: response.message })
+                    throw new Error(response.status, response.statusText);
                 }
+                if (response.status >= 500) {
+                    this.setState({error: true}); 
+                }
+                //response.status     //=> number 100–599
+                //response.statusText //=> String
+                //response.headers    //=> Headers
+                //response.url        //=> String
             })
                 .then((data) => {
-                    this.setState({ confirmacion: 'Se Creado el partido exitosamente!' })
-                    console.log("EXITOSO..." + data);
+                    this.setState({ mensaje: data.mensaje })
+                    console.log(data.mensaje);
                 })
                 .catch((error) => {
                     console.log('error: ' + error);
-                    this.setState({ requestFailed: true });
+                    this.setState({ error: true });
                 });
-
         }
         return (
             <div className="main-content">
 
                 <div className="table-content" >
                     <h1 className="main-title">Sistema de confirmacion al partido de los miercoles</h1>
-                    <h1 className="sub-title">{this.state.confirmacion}</h1>
+                    <h1 className="sub-title">{this.state.mensaje}</h1>
                     <Table borderlessvariant="dark">
                         <tbody>
                             <tr key="1">
@@ -62,7 +69,7 @@ class CrearPartido extends Component {
                                         onChange={this.onChange}
                                         selected={this.state.date}
                                         value={this.state.date}
-                                        disabled={this.state.confirmacion}
+                                        disabled={this.state.mensaje}
                                         placeholderText="Seleccione una fecha!"
                                         minDate={new Date()}
                                     /></td>
@@ -75,7 +82,7 @@ class CrearPartido extends Component {
                             className="main-button"
                             type="button"
                             onClick={() => crearPartido()}
-                            disabled={this.state.confirmacion}>
+                            disabled={this.state.mensaje}>
                             Confirmar
                     </Button>
                     </div>

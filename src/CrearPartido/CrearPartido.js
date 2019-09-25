@@ -33,7 +33,7 @@ class CrearPartido extends Component {
                 body: JSON.stringify({ "fecha": fechaFormateada })
             }).then((response) => {
                 this.setState({estado: response.status});
-                this.setState({mensaje: response.statusText}) 
+                //this.setState({mensaje: response.statusText}) 
                 //if (!response.ok) {
                     //throw new Error(response.status, response.statusText);
                 //}
@@ -45,9 +45,10 @@ class CrearPartido extends Component {
                 //response.statusText //=> String
                 //response.headers    //=> Headers
                 //response.url        //=> String
+                return response.json();
             })
                 .then((data) => {
-                    //this.setState({mensaje: data.mensaje})
+                    this.setState({mensaje: data.mensaje})
                     //console.log(data.mensaje);
                 })
                 .catch((error) => {

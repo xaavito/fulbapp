@@ -45,12 +45,12 @@ class CrearPartido extends Component {
                 //response.url        //=> String
             })
                 .then((data) => {
-                    this.setState({ mensaje: data.mensaje })
+                    this.setState({mensaje: data.mensaje})
                     console.log(data.mensaje);
                 })
                 .catch((error) => {
                     console.log('error: ' + error);
-                    this.setState({ error: true });
+                    this.setState({error: true});
                 });
         }
         return (

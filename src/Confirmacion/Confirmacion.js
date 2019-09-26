@@ -10,12 +10,15 @@ import { Link } from 'react-router-dom'
 class Confirmacion extends Component {
     API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
 
+    // TODO: FIX DE TODAS ESTAS VARIABLES
     state = {
         jugadorID: '',
         confirmacion: 'C',
         resultado: '',
         jugadorNombre: null,
-        responseOK: false
+        responseOK: false,
+        error: false,
+        estado: 100
     }
 
     saveSelectValue = (e) => {
@@ -41,14 +44,16 @@ class Confirmacion extends Component {
                 },
                 body: JSON.stringify({ "id": parsed.id })
             }).then((response) => {
-                if (!response.ok) {
-                    throw new Error(response.status);
+                this.setState({estado: response.status});
+                
+                if (response.status >= 500) {
+                    this.setState({error: true}); 
                 }
-                return response.text();
+                return response.json();
             })
                 .then((data) => {
-                    this.setState({ jugadorNombre: data })
-                    console.log("EXITOSO... " + data);
+                    this.setState({ jugadorNombre: data.mensaje })
+                    console.log("EXITOSO... " + data.mensaje);
                 })
                 .catch((error) => {
                     console.log('error: ' + error);
@@ -77,14 +82,16 @@ class Confirmacion extends Component {
                     "confirma": this.state.confirmacion
                 })
             }).then((response) => {
-                if (!response.ok) {
-                    throw new Error(response.status);
+                this.setState({estado: response.status});
+                
+                if (response.status >= 500) {
+                    this.setState({error: true}); 
                 }
                 return response.text();
             })
                 .then((data) => {
                     console.log("DATA STORED " + data);
-
+                    //TODO: MUY FEO QUEDO TYODO ESTO
                     this.setState({ responseOK: true })
                     this.setState({ resultado: "Confirmacion exitosa! Gracias!" })
                 })

@@ -33,23 +33,14 @@ class CrearPartido extends Component {
                 body: JSON.stringify({ "fecha": fechaFormateada })
             }).then((response) => {
                 this.setState({estado: response.status});
-                //this.setState({mensaje: response.statusText}) 
-                //if (!response.ok) {
-                    //throw new Error(response.status, response.statusText);
-                //}
+                
                 if (response.status >= 500) {
-                    //this.setState({mensaje: response.statusText})
                     this.setState({error: true}); 
                 }
-                //response.status     //=> number 100–599
-                //response.statusText //=> String
-                //response.headers    //=> Headers
-                //response.url        //=> String
                 return response.json();
             })
                 .then((data) => {
                     this.setState({mensaje: data.mensaje})
-                    //console.log(data.mensaje);
                 })
                 .catch((error) => {
                     console.log('error: ' + error);

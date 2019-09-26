@@ -9,7 +9,9 @@ class Historico extends Component {
     API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
 
     state = {
-        partidos: null
+        partidos: null,
+        error: false,
+        estado: 100
     }
 
     loadPartidos = () => {
@@ -26,8 +28,10 @@ class Historico extends Component {
                     'Access-Control-Allow-Origin': 'https://fulbapp-cli.herokuapp.com'
                 }
             }).then((response) => {
-                if (!response.ok) {
-                    throw new Error(response.status);
+                this.setState({estado: response.status});
+                
+                if (response.status >= 500) {
+                    this.setState({error: true}); 
                 }
                 return response.json();
             })

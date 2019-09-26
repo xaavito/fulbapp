@@ -9,7 +9,9 @@ class Asistencia extends Component {
     API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
 
     state = {
-        jugadores: null
+        jugadores: null,
+        error: false,
+        estado: 100
     }
 
     convertConfirm = (confirmStatus) => {
@@ -43,14 +45,16 @@ class Asistencia extends Component {
                     'Access-Control-Allow-Origin': 'https://fulbapp-cli.herokuapp.com'
                 }
             }).then((response) => {
-                if (!response.ok) {
-                    throw new Error(response.status);
+                this.setState({estado: response.status});
+                
+                if (response.status >= 500) {
+                    this.setState({error: true}); 
                 }
                 return response.json();
             })
                 .then((data) => {
-                    this.setState({ jugadores: data })
                     console.log("EXITOSO... " + data);
+                    this.setState({ jugadores: data })
                 })
                 .catch((error) => {
                     console.log('error: ' + error);

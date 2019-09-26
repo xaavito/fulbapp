@@ -12,7 +12,9 @@ class Invitado extends Component {
         nombre: '',
         email: '',
         confirmacion: true,
-        response: ''
+        response: '',
+        error: false,
+        estado: 100
     }
 
     onChange = e => this.setState({ [e.target.name]: e.target.value })
@@ -32,11 +34,12 @@ class Invitado extends Component {
             },
             body: JSON.stringify(this.state)
         }).then((response) => {
-            if (!response.ok) {
-                throw new Error(response.status);
+            this.setState({estado: response.status});
+                
+            if (response.status >= 500) {
+                this.setState({error: true}); 
             }
-            this.setState({ confirmacion: true });
-            return response.text();
+            return response.json();
         })
             .then((data) => {
                 console.log("EXITOSO... " + data);

@@ -7,7 +7,7 @@ import Asistencia from './Asistencia/Asistencia'
 import Invitado from './Invitado/Invitado'
 import Jugador from './Jugador/Jugador'
 import Historico from './Historico/Historico'
-import Historico from './Reglamento/Reglamento'
+import Reglamento from './Reglamento/Reglamento'
 
 import Home from './Home/Home'
 

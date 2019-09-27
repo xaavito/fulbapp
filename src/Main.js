@@ -7,6 +7,7 @@ import Asistencia from './Asistencia/Asistencia'
 import Invitado from './Invitado/Invitado'
 import Jugador from './Jugador/Jugador'
 import Historico from './Historico/Historico'
+import Historico from './Reglamento/Reglamento'
 
 import Home from './Home/Home'
 
@@ -18,6 +19,10 @@ class Main extends Component {
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" />
                 <Switch>
+                    <Route
+                        path='/Reglamento'
+                        component={Reglamento}
+                    />
                     <Route
                         path='/Historico'
                         component={Historico}

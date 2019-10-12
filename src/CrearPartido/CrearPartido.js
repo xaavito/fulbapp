@@ -8,7 +8,7 @@ import Table from 'react-bootstrap/Table'
 import "react-datepicker/dist/react-datepicker.css";
 
 class CrearPartido extends Component {
-    API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
+    API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:5001";
 
     state = {
         date: new Date(),
@@ -28,7 +28,8 @@ class CrearPartido extends Component {
                 method: 'POST',
                 headers: {
                     'Accept': 'text/html',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': this.API_ENDPOINT
                 },
                 body: JSON.stringify({ "fecha": fechaFormateada })
             }).then((response) => {

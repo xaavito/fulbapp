@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
 
 class Jugador extends Component {
-    API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
+    API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:5001";
 
     state = {
         nombre: '',
@@ -32,7 +32,7 @@ class Jugador extends Component {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': 'http://localhost:3000/',
                 // eslint-disable-next-line no-dupe-keys
-                'Access-Control-Allow-Origin': 'https://fulbapp-cli.herokuapp.com'
+                'Access-Control-Allow-Origin': this.API_ENDPOINT
             },
             body: JSON.stringify(this.state)
         }).then((response) => {

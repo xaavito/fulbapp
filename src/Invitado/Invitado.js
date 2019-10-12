@@ -6,7 +6,7 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 
 class Invitado extends Component {
-    API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
+    API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:5001";
 
     state = {
         nombre: '',
@@ -30,7 +30,7 @@ class Invitado extends Component {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': 'http://localhost:3000/',
                 // eslint-disable-next-line no-dupe-keys
-                'Access-Control-Allow-Origin': 'https://fulbapp-cli.herokuapp.com'
+                'Access-Control-Allow-Origin': this.API_ENDPOINT
             },
             body: JSON.stringify(this.state)
         }).then((response) => {
@@ -81,7 +81,7 @@ class Invitado extends Component {
 
                     </Table>
                     <div className="content-button">
-                        <Button disabled={this.state.confirmacion} variant="primary" className="main-button" type="button" onClick={() => this.agregarInvitado()}>Confirmar</Button>
+                        <Button disabled={this.state.nombre} variant="primary" className="main-button" type="button" onClick={() => this.agregarInvitado()}>Confirmar</Button>
                     </div>
                 </div>
             </div >

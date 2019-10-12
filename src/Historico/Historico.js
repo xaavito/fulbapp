@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-//import mainPhoto from '../../src/images/main.jpg';
 import '../../src/resources/style.scss';
 import Table from 'react-bootstrap/Table'
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
-import Button from 'react-bootstrap/Button'
 
 class Historico extends Component {
-    API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
+    API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:5001";
 
     state = {
         partidos: null,
@@ -25,7 +23,7 @@ class Historico extends Component {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': 'http://localhost:3000/',
                     // eslint-disable-next-line no-dupe-keys
-                    'Access-Control-Allow-Origin': 'https://fulbapp-cli.herokuapp.com'
+                    'Access-Control-Allow-Origin': this.API_ENDPOINT
                 }
             }).then((response) => {
                 this.setState({estado: response.status});

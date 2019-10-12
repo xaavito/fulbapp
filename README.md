@@ -74,3 +74,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 https://fulbapp-cli.herokuapp.com/
 
 
+### Para correr en modo dev
+
+```
+npm start
+```

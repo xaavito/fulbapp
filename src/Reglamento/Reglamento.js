@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table'
 import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 
 class Reglamento extends Component {
-    API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
+    API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:5001";
 
     render() {
         return (

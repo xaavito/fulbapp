@@ -6,7 +6,7 @@ import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
 import Button from 'react-bootstrap/Button'
 
 class Asistencia extends Component {
-    API_ENDPOINT = 'https://fulbapp-serv.herokuapp.com';
+    API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:5001";
 
     state = {
         jugadores: null,
@@ -42,7 +42,7 @@ class Asistencia extends Component {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Origin': 'http://localhost:3000/',
                     // eslint-disable-next-line no-dupe-keys
-                    'Access-Control-Allow-Origin': 'https://fulbapp-cli.herokuapp.com'
+                    'Access-Control-Allow-Origin': this.API_ENDPOINT
                 }
             }).then((response) => {
                 this.setState({estado: response.status});
